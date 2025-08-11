@@ -1,0 +1,98 @@
+<!-- ===============================
+     FILE 1: physics/index.html — Physics section hub
+     Save this as: /physics/index.html
+     (American English in code comments; British English in visible prose.)
+================================== -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Physics — Science Notes</title>
+  <link rel="stylesheet" href="../assets/styles.css"><!-- shared CSS -->
+</head>
+<body>
+  <header class="site">
+    <div class="shell row">
+      <div class="brand"><div class="brand-badge"></div><div>Science Notes / Physics</div></div>
+      <nav>
+        <a href="../">Home</a>
+        <a href="./">Physics</a>
+        
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="grid" aria-label="Physics articles and sidebar">
+      <div>
+        <article class="card post">
+          <div class="hd">
+            <h2>Physics — Section hub</h2>
+            <div class="meta"><span>Updated: <time datetime="2025-08-11">2025‑08‑11</time></span></div>
+          </div>
+          <div class="bd">
+            <p class="lead">物理の各記事への入り口です。分野ごとのグループ（タグ）で整理しています。</p>
+            <div class="tags">
+              <span class="tag" data-g="phys">#mechanics</span>
+              <span class="tag" data-g="phys">#thermo</span>
+              <span class="tag" data-g="phys">#em</span>
+              <span class="tag" data-g="phys">#quantum</span>
+            </div>
+
+            <!-- Article list (add more <article> blocks or <li> items) -->
+            <h3>Articles</h3>
+            <div class="list">
+              <article class="card">
+                <div class="hd"><h2 style="font-size:18px; margin:0;">
+                  <a href="ideal-gas-law/">Ideal gas law from kinetic theory</a>
+                </h2></div>
+                <div class="bd">
+                  <div class="meta"><span>Topic: Thermodynamics</span></div>
+                  <p class="lead">運動論から <span class="math">pV = Nk_B T</span> を導く。
+                    <a href="ideal-gas-law/">Read</a></p>
+                  <div class="tags"><span class="tag" data-g="phys">#thermo</span><span class="tag" data-g="stats">#statmech</span></div>
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="hd"><h2 style="font-size:18px; margin:0;">
+                  <a href="harmonic-oscillator/">Classical harmonic oscillator</a>
+                </h2></div>
+                <div class="bd">
+                  <div class="meta"><span>Topic: Mechanics</span></div>
+                  <p class="lead">運動方程式、固有角振動数、エネルギー分解。<a href="harmonic-oscillator/">Read</a></p>
+                  <div class="tags"><span class="tag" data-g="phys">#mechanics</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="aside">
+        <section class="card">
+          <div class="hd"><h3>Groups / グループ</h3></div>
+          <div class="bd">
+            <div class="tags">
+              <span class="tag" data-g="phys">#mechanics</span>
+              <span class="tag" data-g="phys">#thermo</span>
+              <span class="tag" data-g="phys">#em</span>
+              <span class="tag" data-g="phys">#quantum</span>
+            </div>
+            <p class="hint">新規記事を追加したら、ここにも関連グループを追加しましょう。</p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site"><div class="shell">© 2025 Science Notes</div></footer>
+
+  <!-- MathJax (enable TeX rendering if you use TeX on this page) -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, options: { renderActions: { addMenu: [] } } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</body>
+</html>

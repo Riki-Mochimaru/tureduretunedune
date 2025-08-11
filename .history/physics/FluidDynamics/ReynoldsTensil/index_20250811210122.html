@@ -1,0 +1,84 @@
+
+<!-- ===============================
+     FILE 2: physics/ideal-gas-law/index.html — Example physics article
+     Save this as: /physics/ideal-gas-law/index.html
+================================== -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ideal Gas Law — Physics — Science Notes</title>
+  <link rel="stylesheet" href="../../../assets/styles.css"><!-- note the two-level path -->
+</head>
+<body>
+  <header class="site">
+    <div class="shell row">
+      <div class="brand"><div class="brand-badge"></div><div>Science Notes / Physics</div></div>
+      <nav>
+        <a href="../../">Home</a>
+        <a href="../">Physics</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <article class="card post">
+      <div class="hd">
+        <h2>Reynolds Tensilの導き方</h2>
+        <div class="meta"><span>Updated: <time data-auto-updated datetime="">—</time></span></div>
+      </div>
+      <div class="bd">
+        <div class="tags"><span class="tag" data-g="phys">#thermo</span><span class="tag" data-g="stats">#statmech</span></div>
+        <p class="lead">Reynolds応力</p>
+
+        <h3>準備</h3>
+        <p>立方体容器内で質量 <span class="math">m</span>、速度 <span class="math">\boldsymbol{v}</span> の粒子集団を考え、壁での弾性衝突を仮定します。</p>
+
+        <div class="math">\[ p = \frac{1}{3}\, \rho \, \overline{v^2} \] <span class="eqno">(1)</span></div>
+        <p>ここで <span class="math">\rho = m n</span> は質量密度、<span class="math">\overline{v^2}</span> は速度二乗の平均です。</p>
+
+        <h3>Conclusion</h3>
+        <div class="math">\[ pV = N k_B T \] <span class="eqno">(2)</span></div>
+
+        <!-- Optional comment widget area (swap your local UI or add Giscus) -->
+        <section class="comments">
+          <h3>Comments</h3>
+          <div class="comment"><div class="avatar">TA</div><div><div class="who">Teaching Assistant <span class="when">· 10:02</span></div><div>仮定（弾性・希薄・非相互作用）を本文先頭で列挙すると親切。</div></div></div>
+          <!-- Placeholder form (non-functional in static HTML) -->
+          <form class="form" action="#" method="post">
+            <input class="input" name="who" placeholder="お名前" required>
+            <textarea class="textarea" name="body" rows="3" placeholder="コメント（TeX可: 例 \\(a^2+b^2=c^2\\)）" required></textarea>
+            <button class="btn" type="button" aria-disabled="true">投稿（デモ）</button>
+            <div class="hint">※ Pages は静的配信です。保存するには Giscus 等のウィジェットか JS を追加してください。</div>
+          </form>
+        </section>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site"><div class="shell">© 2025 Science Notes</div></footer>
+
+  <!-- MathJax (TeX rendering) -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, options: { renderActions: { addMenu: [] } } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</body>
+</html>
+
+<script>
+    // Client-side: auto-fill "Updated" date from document.lastModified
+    document.querySelectorAll('time[data-auto-updated]').forEach(t => {
+      const d = new Date(document.lastModified);
+      // ISO (yyyy-mm-dd)
+      const iso = new Date(d.getTime() - d.getTimezoneOffset()*60000)
+                    .toISOString().slice(0,10);
+      t.setAttribute('datetime', iso);
+      // Human-readable in Japanese (Asia/Tokyo)
+      t.textContent = d.toLocaleDateString('ja-JP', {
+        timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
+      });
+    });
+    </script>
+    

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Science Forum • Study & Discussion</title>
+  <meta name="description" content="A clean, responsive HTML+CSS template for scientific study and discussion." />
+
+  <!-- CSS: Embedded for a single-file template. You can extract into styles.css later. -->
+  <style>
+    /* =========================
+       Design tokens
+       ========================= */
+    :root {
+      --bg: #0b0c10;
+      --panel: #111319;
+      --panel-elev: #171a21;
+      --text: #e6e8ef;
+      --muted: #9aa3b2;
+      --brand: #6ea8fe; /* soft cornflower */
+      --brand-600: #4d86f7;
+      --accent: #7de2d1; /* mint */
+      --danger: #ff6b6b;
+      --warn: #ffd166;
+      --ok: #84e37c;
+      --link: #9ac1ff;
+      --code-bg: #0e1117;
+      --border: #1f2430;
+      --ring: #2a5fff55;
+      --shadow: 0 10px 24px rgba(0,0,0,.35), 0 1px 0 rgba(255,255,255,.04) inset;
+      --radius: 16px;
+      --radius-sm: 12px;
+      --radius-lg: 22px;
+      --gap: 16px;
+      --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans JP, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fb;
+        --panel: #ffffff;
+        --panel-elev: #f9fbff;
+        --text: #1c2333;
+        --muted: #5b6578;
+        --brand: #3f7dff;
+        --brand-600: #2d63db;
+        --accent: #1bbfb0;
+        --link: #1d4ed8;
+        --code-bg: #f3f5f9;
+        --border: #e8ecf5;
+        --ring: #2962ff33;
+        --shadow: 0 10px 24px rgba(0,0,0,.08), 0 1px 0 rgba(255,255,255,.9) inset;
+      }
+    }
+
+    /* Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; background: radial-gradient(1200px 500px at 80% -50%, var(--brand-600) 0%, transparent 60%),
+                                   radial-gradient(1200px 500px at -10% 120%, var(--accent) 0%, transparent 60%),
+                                   var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      letter-spacing: .2px; 
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout */
+    .shell { max-width: 1200px; margin: 0 auto; padding: 24px; }
+    header.site {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: saturate(1.2) blur(8px);
+      background: color-mix(in oklab, var(--bg) 92%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .site-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 12px; }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .logo {
+      width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--brand), var(--accent));
+      box-shadow: var(--shadow);
+    }
+    .title { font-size: clamp(18px, 2.2vw, 24px); font-weight: 800; letter-spacing: .3px; }
+    nav a { margin-left: 18px; font-weight: 600; opacity: .9; }
+
+    /* Hero */
+    .hero { margin-top: 24px; }
+    .hero-inner {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 80%, transparent), var(--panel));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: clamp(20px, 3.5vw, 40px);
+      display: grid; grid-template-columns: 1.25fr .75fr; gap: 28px; align-items: center;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { font-size: clamp(22px, 3.6vw, 42px); margin: 0 0 8px; line-height: 1.2; }
+    .hero p { margin: 0; color: var(--muted); }
+    .hero .badges { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 10px; }
+    .badge { padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--panel) 85%, transparent); font-size: 12px; }
+    .hero-cta { display: flex; gap: 12px; margin-top: 18px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 14px; font-weight: 700;
+      border-radius: 12px; border: 1px solid var(--border); background: var(--panel-elev); box-shadow: var(--shadow);
+    }
+    .btn.primary { background: linear-gradient(180deg, var(--brand), var(--brand-600)); color: #fff; border-color: transparent; }
+
+    /* Main area */
+    .grid { display: grid; grid-template-columns: 2.2fr 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+
+    /* Thread / Post cards */
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: clip;
+    }
+    .card .hd { padding: 16px 18px; border-bottom: 1px solid var(--border); display:flex; align-items:center; justify-content: space-between; }
+    .card .hd h2 { margin: 0; font-size: 18px; }
+    .card .bd { padding: 18px; }
+    .meta { font-size: 12px; color: var(--muted); display:flex; gap:12px; }
+
+    .post { display: grid; grid-template-columns: 40px 1fr; gap: 12px; padding: 12px 0; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--accent)); display:grid; place-items:center; font-weight:800; color:#0009; }
+    .post .author { font-weight: 700; }
+    .post .role { font-size: 12px; color: var(--muted); }
+    .post .content { margin-top: 4px; }
+    .post + .post { border-top: 1px dashed var(--border); }
+
+    /* Content helpers */
+    h3, h4 { margin: 16px 0 8px; }
+    .kicker { text-transform: uppercase; font-size: 12px; letter-spacing: .12em; color: var(--brand); font-weight: 800; }
+    .muted { color: var(--muted); }
+    .lead { font-size: 1.1rem; color: var(--muted); }
+
+    /* Callouts */
+    .callout {
+      border: 1px solid var(--border); border-left: 4px solid var(--brand);
+      background: color-mix(in oklab, var(--panel) 85%, transparent);
+      border-radius: 10px; padding: 12px 14px; margin: 12px 0; box-shadow: var(--shadow);
+    }
+    .callout[data-type="theorem"] { border-left-color: var(--accent); }
+    .callout[data-type="warning"] { border-left-color: var(--warn); }
+    .callout[data-type="reference"] { border-left-color: var(--brand-600); }
+
+    /* Equations (LaTeX later with MathJax if needed) */
+    .equation { font-family: var(--font-mono); background: var(--code-bg); padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); overflow:auto; }
+    .eqno { float: right; color: var(--muted); margin-left: 8px; }
+
+    /* Code */
+    pre, code { font-family: var(--font-mono); }
+    pre { background: var(--code-bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px; overflow:auto; box-shadow: var(--shadow); }
+
+    /* Figures & tables */
+    figure { margin: 14px 0; background: color-mix(in oklab, var(--panel) 85%, transparent); border: 1px solid var(--border); border-radius: 12px; overflow: clip; box-shadow: var(--shadow); }
+    figure img { display: block; width: 100%; height: auto; }
+    figure figcaption { padding: 10px 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
+
+    table { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+    thead th { background: color-mix(in oklab, var(--panel) 85%, transparent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+
+    /* Aside */
+    .aside .card + .card { margin-top: 18px; }
+    .tagcloud { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { font-size: 12px; padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: color-mix(in oklab, var(--panel) 85%, transparent); }
+
+    /* Footer */
+    footer.site { margin-top: 28px; color: var(--muted); font-size: 13px; text-align: center; padding: 16px 0 40px; }
+
+    /* Forms (for future JS) */
+    .input, .select, .textarea {
+      width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel-elev); color: var(--text);
+      outline: none; box-shadow: 0 0 0 0 var(--ring);
+    }
+    .input:focus, .select:focus, .textarea:focus { box-shadow: 0 0 0 6px var(--ring); }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    /* Print (academic-friendly) */
+    @media print {
+      body { background: #fff; color: #000; }
+      .hero, header.site, footer.site { display: none; }
+      .card { box-shadow: none; border-color: #ccc; }
+      a { color: #000; text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="shell site-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="title">まるっちと　がんばろう <span class="muted">物理学とか</span></div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#threads">Threads</a>
+        <a href="#resources">Resources</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" id="about">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker">Purpose / 目的</div>
+          <h1>Study-first science discussions</h1>
+          <p class="lead">教材としての議論に最適化した、静的な HTML + CSS のテンプレート。定義・定理・実験手順・反証例・参考文献のパターンを予め用意しています。</p>
+          <div class="badges">
+            <span class="badge">Accessible</span>
+            <span class="badge">Responsive</span>
+            <span class="badge">Print‑ready</span>
+            <span class="badge">Math‑friendly</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn primary" href="#new-thread">Start a thread</a>
+            <a class="btn" href="#resources">View resources</a>
+          </div>
+        </div>
+        <figure>
+          <img alt="Stylised graph and notes" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?><svg xmlns='http://www.w3.org/2000/svg' width='900' height='500'><defs><linearGradient id='g' x1='0' x2='1' y1='0' y2='1'><stop stop-color='%236ea8fe'/><stop offset='1' stop-color='%237de2d1'/></linearGradient></defs><rect width='100%' height='100%' fill='%23111319'/><path d='M40 420 Q 220 70 440 210 T 860 200' stroke='url(%23g)' stroke-width='6' fill='none'/><g fill='%239aa3b2' font-family='monospace' font-size='16'><text x='60' y='460'>t</text><text x='6' y='30'>y</text><text x='80' y='70'>hypothesis</text><text x='460' y='130'>result</text></g><circle cx='440' cy='210' r='6' fill='%237de2d1'/></svg>" />
+          <figcaption>Abstract visual – replace with your own figure or hero image.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="grid" id="threads" aria-label="Main content">
+      <div>
+        <!-- Thread: Example -->
+        <article class="card" id="thread-1">
+          <div class="hd">
+            <h2>Convergence of gradient descent under Lipschitz‑smoothness</h2>
+            <div class="meta" aria-label="Thread meta">
+              <span>Topic: <strong>Optimisation</strong></span>
+              <span>Updated: <time datetime="2025-08-10">2025‑08‑10</time></span>
+            </div>
+          </div>
+          <div class="bd">
+            <p class="lead">前提・記号を明確化し、証明の各段階をスレッドで段階的に公開する形式です。</p>
+
+            <div class="callout" data-type="theorem">
+              <strong>Theorem / 定理.</strong> Let <span class="equation">f: \mathbb{R}^n \to \mathbb{R}</span> be convex and L‑smooth. Using step size <span class="equation">\eta \le 1/L</span>, gradient descent satisfies <span class="equation">f(x_k) - f(x^*) \le \dfrac{\|x_0 - x^*\|^2}{2\eta k}</span>.
+            </div>
+
+            <div class="post">
+              <div class="avatar" aria-hidden="true">RM</div>
+              <div>
+                <div class="author">R. Mochimaru <span class="role">(student)</span></div>
+                <div class="content">
+                  <p>Assume <span class="equation">\nabla f</span> is L‑Lipschitz. We begin with the descent lemma and telescope. 添削歓迎です。</p>
+                  <pre><code>// pseudo‑code
+for (k = 0; k &lt; K; k++) {
+  x = x - eta * grad(f, x);
+}
+</code></pre>
+                </div>
+                <div class="meta"><span>Posted 09:12</span><span>8 ❤️  ·  2 🔁</span></div>
+              </div>
+            </div>
+
+            <div class="post">
+              <div class="avatar" aria-hidden="true">TA</div>
+              <div>
+                <div class="author">Teaching Assistant <span class="role">(moderator)</span></div>
+                <div class="content">
+                  <div class="callout" data-type="reference">
+                    <strong>Reference.</strong> See Nesterov (2018), §1.2.
+                  </div>
+                  <p>「L‑smoothness（滑らかさ）」= 勾配が <span class="equation">L</span>‑リプシッツであること（<em>jargon</em>: 勾配の変化が最大 <span class="equation">L</span> 倍に抑えられる性質）。</p>
+                </div>
+              </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px dashed var(--border); margin: 16px 0;" />
+
+            <!-- Suggested structure for a new message -->
+            <div id="new-thread" class="callout" data-type="warning">
+              <strong>How to post / 投稿指針</strong>
+              <ul>
+                <li>State assumptions precisely（前提を厳密に明記）</li>
+                <li>Define symbols before use（記号の定義を先に）</li>
+                <li>Link to sources（出典を明示）</li>
+                <li>Provide counter‑examples where useful（反例が有用な場合は提示）</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Resources card -->
+        <article class="card" id="resources" style="margin-top: 18px;">
+          <div class="hd"><h2>Resources / 参考資料</h2></div>
+          <div class="bd">
+            <ul>
+              <li>House style: British English in prose; American English in code comments.</li>
+              <li>Mathematics: write as LaTeX inline (e.g., <span class="equation">\alpha,\,\beta</span>); you can enable MathJax later.</li>
+              <li>Citations: give author (year), title, and a stable link.</li>
+            </ul>
+            <div class="tagcloud" aria-label="Tags">
+              <span class="tag">#analysis</span>
+              <span class="tag">#algebra</span>
+              <span class="tag">#optimisation</span>
+              <span class="tag">#physics</span>
+              <span class="tag">#statistics</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="aside" aria-label="Sidebar">
+        <section class="card">
+          <div class="hd"><h2>Quick note</h2></div>
+          <div class="bd">
+            <p>Use the template as a starting point. Replace placeholder text, and duplicate the <code>.post</code> blocks for new messages.</p>
+            <p class="muted">印刷（Ctrl/Cmd+P）で講義配布資料にも対応。</p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>Glossary / 用語集</h2></div>
+          <div class="bd">
+            <dl>
+              <dt>L‑smoothness</dt>
+              <dd>勾配が L‑リプシッツ連続。<em>Jargon:</em> gradient is bounded in change by L.</dd>
+              <dt>Convexity</dt>
+              <dd>接線が常に下に来る形。<em>Jargon:</em> Jensen に従う形状。</dd>
+            </dl>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="hd"><h2>Footnotes / 注</h2></div>
+          <div class="bd">
+            <ol>
+              <li>式番号は <code>.eqno</code> で右寄せ出来ます：
+                <div class="equation">\|x_{k+1}-x^*\|^2 \le \|x_k-x^*\|^2 - 2\eta (f(x_k)-f(x^*)) <span class="eqno">(1)</span></div>
+              </li>
+            </ol>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site">
+    <div class="shell">© 2025 Science Forum Template. Built with semantic HTML and modern CSS.</div>
+  </footer>
+
+  <!-- Optional: enable MathJax by uncommenting below (LaTeX rendering). -->
+  <!--
+  <script>
+    // Minimal config for MathJax v3 (no external fetch here by default).
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }, options: { renderActions: { addMenu: [] } } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+  -->
+</body>
+</html>

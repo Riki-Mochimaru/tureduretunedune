@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>まるっちの おぼえがき— Home</title>
+  <title>Science Notes — Home</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header class="site">
     <div class="shell row">
-      <div class="brand"><div class="brand-badge"></div><div>まるっちの　おぼえがき / Home</div></div>
+      <div class="brand"><div class="brand-badge"></div><div>Science Notes / Home</div></div>
       <nav>
         <a href="./">Home</a>
         <a href="physics/">Physics</a>
@@ -23,26 +23,27 @@
       <div>
         <article class="card post">
           <div class="hd">
-            <h2>目的</h2>
-            <div class="meta"><span>Updated: <time data-auto-updated datetime="">—</time></span></div>
+            <h2>Welcome</h2>
+            <div class="meta"><span>Updated: <time datetime="2025-08-11">2025-08-11</time></span></div>
           </div>
           <div class="bd">
-            <p class="lead">まるっちが勉強したことをまとめるためのwebサイトです。間違いなどがあれば教えて欲しいです。</p>
+            <p class="lead">ここがホームです。分野ごとのページはナビから移動できます。</p>
             <div class="tags">
-              <!-- <span class="tag" data-g="math"></span>
-              <span class="tag" data-g="cs">#cs</span> -->
+              <span class="tag" data-g="math">#maths</span>
+              <span class="tag" data-g="cs">#cs</span>
             </div>
 
             <h3>数式の例</h3>
             <div class="math">\\[ E = mc^2 \\]</div>
 
             <section class="comments">
-              <h3>Comments</h3>
+              <h3>Comments（見た目だけのデモ）</h3>
+              <div class="comment"><div class="avatar">TA</div><div><div class="who">TA</div><div>ナビから物理ページに進んでみて。</div></div></div>
               <form class="form" action="#" method="post">
                 <input class="input" name="who" placeholder="お名前" required>
                 <textarea class="textarea" name="body" rows="3" placeholder="コメント（TeX 可: 例 \\(a^2+b^2=c^2\\)）" required></textarea>
                 <button class="btn" type="button" aria-disabled="true">投稿（デモ）</button>
-                <div class="hint"></div>
+                <div class="hint">※ 静的テンプレなので保存はしません。あとでJSを足せます。</div>
               </form>
             </section>
           </div>
@@ -51,13 +52,13 @@
 
       <aside class="aside">
         <section class="card">
-          <div class="hd"><h3>Groups</h3></div>
+          <div class="hd"><h3>Groups / グループ</h3></div>
           <div class="bd">
             <div class="tags">
-              <span class="tag" data-g="phys">physics</span>
-              <span class="tag" data-g="math">maths</span>
-              <span class="tag" data-g="cs">cs</span>
-              <span class="tag" data-g="stats">statistics</span>
+              <span class="tag" data-g="phys">#physics</span>
+              <span class="tag" data-g="math">#maths</span>
+              <span class="tag" data-g="cs">#cs</span>
+              <span class="tag" data-g="stats">#statistics</span>
             </div>
           </div>
         </section>
@@ -65,7 +66,7 @@
     </section>
   </main>
 
-  <footer class="site"><div class="shell">© 2025 まるっち</div></footer>
+  <footer class="site"><div class="shell">© 2025 Science Notes</div></footer>
 
   <!-- 数式レンダリング（必要なら有効化） -->
   <script>
@@ -75,19 +76,5 @@
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-  <script>
-    // Client-side: auto-fill "Updated" date from document.lastModified
-    document.querySelectorAll('time[data-auto-updated]').forEach(t => {
-      const d = new Date(document.lastModified);
-      // ISO (yyyy-mm-dd)
-      const iso = new Date(d.getTime() - d.getTimezoneOffset()*60000)
-                    .toISOString().slice(0,10);
-      t.setAttribute('datetime', iso);
-      // Human-readable in Japanese (Asia/Tokyo)
-      t.textContent = d.toLocaleDateString('ja-JP', {
-        timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
-      });
-    });
-    </script>
 </body>
 </html>

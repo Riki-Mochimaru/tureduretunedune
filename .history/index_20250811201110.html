@@ -12,7 +12,7 @@
       <div class="brand"><div class="brand-badge"></div><div>まるっちの　おぼえがき / Home</div></div>
       <nav>
         <a href="./">Home</a>
-        <a href="physics/">Physics</a>
+        <a href="physics・">Physics</a>
         <a href="maths/">Mathematics</a>
       </nav>
     </div>
@@ -24,7 +24,7 @@
         <article class="card post">
           <div class="hd">
             <h2>目的</h2>
-            <div class="meta"><span>Updated: <time data-auto-updated datetime="">—</time></span></div>
+            <div class="meta"><span>Updated: <time datetime="2025-08-11">2025-08-11</time></span></div>
           </div>
           <div class="bd">
             <p class="lead">まるっちが勉強したことをまとめるためのwebサイトです。間違いなどがあれば教えて欲しいです。</p>
@@ -75,19 +75,5 @@
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-  <script>
-    // Client-side: auto-fill "Updated" date from document.lastModified
-    document.querySelectorAll('time[data-auto-updated]').forEach(t => {
-      const d = new Date(document.lastModified);
-      // ISO (yyyy-mm-dd)
-      const iso = new Date(d.getTime() - d.getTimezoneOffset()*60000)
-                    .toISOString().slice(0,10);
-      t.setAttribute('datetime', iso);
-      // Human-readable in Japanese (Asia/Tokyo)
-      t.textContent = d.toLocaleDateString('ja-JP', {
-        timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
-      });
-    });
-    </script>
 </body>
 </html>
