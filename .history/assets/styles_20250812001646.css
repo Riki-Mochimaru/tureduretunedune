@@ -94,13 +94,7 @@
   .list { display: grid; gap: 10px; }
   
   /* Footer */
-    footer.site {
-      margin-top: 28px;
-      color: var(--subtle);
-      font-size: 13px;
-      text-align: center;
-      padding: 20px 0 40px;
-    }
+  footer.site { margin-top: 28px; color: var(--subtle); font-size: 13px; text-align: center; padding: 20px 0 40px; }
   
   /* Print */
   @media print {

@@ -94,13 +94,7 @@
   .list { display: grid; gap: 10px; }
   
   /* Footer */
-    footer.site {
-      margin-top: 28px;
-      color: var(--subtle);
-      font-size: 13px;
-      text-align: center;
-      padding: 20px 0 40px;
-    }
+  footer.site { margin-top: 28px; color: var(--subtle); font-size: 13px; text-align: center; padding: 20px 0 40px; }
   
   /* Print */
   @media print {
@@ -108,14 +102,4 @@
     .card { box-shadow: none; border-color: #ccc; }
     a { color: #000; text-decoration: none; }
   }
-  /* Only this link should be black in the header brand */
-header.site .brand a.link-black:link,
-header.site .brand a.link-black:visited {
-  color: #000 !important;   /* 競合対策で念のため */
-}
-
-header.site .brand a.link-black:hover,
-header.site .brand a.link-black:active {
-  color: #000 !important;
-  text-decoration: underline;
-}
+  

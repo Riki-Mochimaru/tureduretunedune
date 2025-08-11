@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>まるっちの おぼえがき</title>
+  <title>まるっちの おぼえがき— Home</title>
   <link rel="stylesheet" href="assets/styles.css">
 </head>
-
 <body>
   <header class="site">
     <div class="shell row">
-      <div class="brand">
-        <div class="brand-badge"></div>
-        <div><a href="./" class="link-black">まるっちの　おぼえがき</a></div>
-      </div>
+      <div class="brand"><div class="brand-badge"></div><div>まるっちの　おぼえがき / Home</div></div>
+      <nav>
+        <a href="./">Home</a>
+        <a href="physics/">Physics</a>
+        <a href="maths/">Mathematics</a>
+      </nav>
     </div>
   </header>
 
@@ -35,24 +35,23 @@
 
             <!-- <h3>数式の例</h3>
             <div class="math">\\[ E = mc^2 \\]</div> -->
-            <article class="card">
-              <div class="hd">
-                <h2 style="font-size:18px; margin:0;">
-                  <a href="physics/">Physics</a>
-                </h2>
-              </div>
-            </article>
-
-
+            <! -- <
+            <section class="comments">
+              <h3>Comments</h3>
+              <form class="form" action="#" method="post">
+                <input class="input" name="who" placeholder="お名前" required>
+                <textarea class="textarea" name="body" rows="3" placeholder="コメント（TeX 可: 例 \\(a^2+b^2=c^2\\)）" required></textarea>
+                <button class="btn" type="button" aria-disabled="true">投稿（デモ）</button>
+                <div class="hint"></div>
+              </form>
+            </section>
           </div>
         </article>
       </div>
 
       <aside class="aside">
         <section class="card">
-          <div class="hd">
-            <h3>Groups</h3>
-          </div>
+          <div class="hd"><h3>Groups</h3></div>
           <div class="bd">
             <div class="tags">
               <span class="tag" data-g="phys">physics</span>
@@ -66,14 +65,12 @@
     </section>
   </main>
 
-  <footer class="site">
-    <div class="shell">© 2025 まるっち</div>
-  </footer>
+  <footer class="site"><div class="shell">© 2025 まるっち</div></footer>
 
   <!-- 数式レンダリング（必要なら有効化） -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+      tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
       options: { renderActions: { addMenu: [] } }
     };
   </script>
@@ -83,15 +80,14 @@
     document.querySelectorAll('time[data-auto-updated]').forEach(t => {
       const d = new Date(document.lastModified);
       // ISO (yyyy-mm-dd)
-      const iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
-        .toISOString().slice(0, 10);
+      const iso = new Date(d.getTime() - d.getTimezoneOffset()*60000)
+                    .toISOString().slice(0,10);
       t.setAttribute('datetime', iso);
       // Human-readable in Japanese (Asia/Tokyo)
       t.textContent = d.toLocaleDateString('ja-JP', {
         timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
       });
     });
-  </script>
+    </script>
 </body>
-
 </html>

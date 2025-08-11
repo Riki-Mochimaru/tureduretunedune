@@ -1,0 +1,133 @@
+<!-- ===============================
+     FILE 1: physics/index.html — Physics section hub
+     Save this as: /physics/index.html
+     (American English in code comments; British English in visible prose.)
+================================== -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Physics — Science Notes</title>
+  <link rel="stylesheet" href="../assets/styles.css"><!-- shared CSS -->
+</head>
+<body>
+  <header class="site">
+    <div class="shell row">
+      <div class="brand"><div class="brand-badge"></div><div>Science Notes / Physics</div></div>
+      <nav>
+        <a href="../">Home</a>
+        <a href="./">Physics</a>
+        <a href="FluidDynamics/">Fluid Dynamics</a>
+        <a href="Cosmology/">Cosmology</a>
+        <a href="SM/">Statistical Mechanics</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="grid" aria-label="Physics articles and sidebar">
+      <div>
+        <article class="card post">
+          <div class="hd">
+            <h2>Physics — Section hub</h2>
+            <div class="meta"><span>Updated: <time data-auto-updated datetime="">—</time>
+            </span></div>
+          </div>
+          <div class="bd">
+            <p class="lead">物理の各記事への入り口です。分野ごとのグループ（タグ）で整理しています。</p>
+            <div class="tags">
+              <span class="tag" data-g="phys">#mechanics</span>
+              <span class="tag" data-g="phys">#thermo</span>
+              <span class="tag" data-g="phys">#em</span>
+              <span class="tag" data-g="phys">#quantum</span>
+            </div>
+
+            <!-- Article list (add more <article> blocks or <li> items) -->
+            <h3>Articles</h3>
+            <div class="list">
+                <article class="card">
+                    <div class="hd"><h2 style="font-size:18px; margin:0;">
+                      <a href="SM/">統計力学</a>
+                    </h2></div>
+                    <div class="bd">
+                      <!-- <div class="meta"><span>Topic: Fluid Dynamics</span></div> -->
+                      <p class="lead">微視的な物理法則から、マクロな物理現象を説明するための理論です。
+                     <div>
+                        <a href="SM/Fermion.html">フェルミオン</a>
+                    </div>
+                    <div><a href="SM/Boltzmann.html">ボルツマン分布</a></div>
+                    <div> <a href="SM/Boson.html">ボソン</a></div>
+    
+                  </article>
+              <article class="card">
+                <div class="hd"><h2 style="font-size:18px; margin:0;">
+                  <a href="FluidDynamics/">連続体力学</a>
+                </h2></div>
+                <div class="bd">
+                  <!-- <div class="meta"><span>Topic: Fluid Dynamics</span></div> -->
+                  <p class="lead">主に流体力学の基礎を扱います。
+                 <div>
+                    <a href="FluidDynamics/ReynoldsTensil.html">Reynolds応力</a>
+                </div>
+                </div>
+
+              </article>
+
+              <article class="card">
+                <div class="hd"><h2 style="font-size:18px; margin:0;">
+                  <a href="Cosmology/">宇宙論</a>
+                </h2></div>
+                <div class="bd">
+                  <!-- <div class="meta"><span>Topic: Mechanics</span></div> -->
+                  <p class="lead">宇宙論について<a href="Cosmology/">Read</a></p>
+                  <!-- <div class="tags"><span class="tag" data-g="phys">#mechanics</span></div> -->
+                </div>
+              </article>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <aside class="aside">
+        <section class="card">
+          <div class="hd"><h3>Groups / グループ</h3></div>
+          <div class="bd">
+            <div class="tags">
+              <span class="tag" data-g="phys">#mechanics</span>
+              <span class="tag" data-g="phys">#thermo</span>
+              <span class="tag" data-g="phys">#em</span>
+              <span class="tag" data-g="phys">#quantum</span>
+            </div>
+            <p class="hint">新規記事を追加したら、ここにも関連グループを追加しましょう。</p>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site"><div class="shell">© 2025 Science Notes</div></footer>
+
+  <!-- MathJax (enable TeX rendering if you use TeX on this page) -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] }, options: { renderActions: { addMenu: [] } } };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+</body>
+</html>
+
+<script>
+    // Client-side: auto-fill "Updated" date from document.lastModified
+    document.querySelectorAll('time[data-auto-updated]').forEach(t => {
+      const d = new Date(document.lastModified);
+      // ISO (yyyy-mm-dd)
+      const iso = new Date(d.getTime() - d.getTimezoneOffset()*60000)
+                    .toISOString().slice(0,10);
+      t.setAttribute('datetime', iso);
+      // Human-readable in Japanese (Asia/Tokyo)
+      t.textContent = d.toLocaleDateString('ja-JP', {
+        timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit'
+      });
+    });
+    </script>
+    
